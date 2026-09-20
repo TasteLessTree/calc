@@ -9,13 +9,14 @@ pub enum TokenType {
 	mult
 	right_parent
 	left_parent
+	token_eof
 }
 
 pub struct Token {
 pub:
 	token_type TokenType
-	data       string
 	column     int
+	data       string
 }
 
 pub fn (t Token) str() string {
@@ -47,6 +48,9 @@ fn get_token_type(t TokenType) string {
 		}
 		.left_parent {
 			'left parenthesis'
+		}
+		.token_eof {
+			'End Of File Token'
 		}
 	}
 }
