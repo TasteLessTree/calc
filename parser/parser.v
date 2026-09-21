@@ -21,8 +21,8 @@ mut:
 	position int
 }
 
-pub fn Parser.new(t []Token) Parser {
-	return Parser{ tokens: t, position: 0 }
+pub fn Parser.new(t []Token) &Parser {
+	return &Parser{ tokens: t, position: 0 }
 }
 
 // Build the AST
@@ -54,7 +54,7 @@ fn (mut p Parser) parse_factor() !AstNode {
 			return expression
 		}
 		else {
-			return error('Expected a number or an open parenthesis')
+			return error('Expected a number or an open parenthesis.\nGot: "${token.data}" (${token.token_type}), column: ${token.column}')
 		}
 	}
 }
@@ -139,7 +139,7 @@ fn (mut p Parser) expect(expected_token_type TokenType) !Token {
 	token := p.peek()
 
 	if token.token_type != expected_token_type {
-		return error("Expected: '${expected_token_type}', got: '${token.token_type}'\nColumn: ${token.column}")
+		return error('Expected: "${expected_token_type}".\nGot: "${token.data}" (${token.token_type}), column: ${token.column}')
 	}
 
 	// Consume the current token and return it

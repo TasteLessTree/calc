@@ -6,12 +6,9 @@ import ast
 
 fn main() {
 	input := '27 + (420 / 10)'
-	l := lexer.Lexer.new()
+	mut l := lexer.Lexer.new()
 
 	tokens := l.tokenize(input)
-
-	// println(tokens)
-	// println('Tokens len ${tokens.len}')
 
 	mut p := parser.Parser.new(tokens)
 	node := p.parse() or {
@@ -25,6 +22,6 @@ fn main() {
 	}
 
 	println('Input: ${input}')
-	println(result)
+	println('Result: ${result}')
 	ast.print_ast(node, 0)
 }

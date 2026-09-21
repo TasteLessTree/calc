@@ -126,9 +126,8 @@ fn (mut l Lexer) read_symbol(source string) Token {
 	start := l.position
 	start_column := l.column
 
-	for l.peek(source) == Char.symbol {
-		l.consume(source)
-	}
+	l.consume(source)
+
 	word := source.substr(start, l.position)
 
 	return Token{ token_type: check_for_symbols(word), data: word, column: start_column }

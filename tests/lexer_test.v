@@ -1,4 +1,4 @@
-module test
+module tests
 
 import lexer
 
@@ -90,6 +90,24 @@ fn test_tokenize_valid_input_with_unexpected_characters() {
 		Token{ token_type: TokenType.plus, data: '+', column: 4 },
 		Token{ token_type: TokenType.invalid, data: 'c', column: 6 },
 		Token{ token_type: TokenType.token_eof, column: 7 }]
+
+	assert l.tokenize(input) == expected
+}
+
+fn test_tokenize_nested_parenthesis() {
+	mut l := lexer.Lexer.new()
+
+	input := '((9 - 3) + 4)'
+	expected := [Token{ token_type: TokenType.left_parent, data: '(', column: 1 },
+		Token{ token_type: TokenType.left_parent, data: '(', column: 2 },
+		Token{ token_type: TokenType.num, data: '9', column: 3 },
+		Token{ token_type: TokenType.sub, data: '-', column: 5 },
+		Token{ token_type: TokenType.num, data: '3', column: 7 },
+		Token{ token_type: TokenType.right_parent, data: ')', column: 8 },
+		Token{ token_type: TokenType.plus, data: '+', column: 10 },
+		Token{ token_type: TokenType.num, data: '4', column: 12 },
+		Token{ token_type: TokenType.right_parent, data: ')', column: 13 },
+		Token{ token_type: TokenType.token_eof, column: 14 }]
 
 	assert l.tokenize(input) == expected
 }
