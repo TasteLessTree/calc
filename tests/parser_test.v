@@ -1,16 +1,7 @@
 module tests
 
-import ast
 import lexer
 import parser
-
-type NumberNode = ast.NumberNode
-
-type BinaryNode = ast.BinaryNode
-
-type Operator = ast.Operator
-
-type AstNode = ast.AstNode
 
 fn test_parse_sigle_digit_number() {
 	input := '5'
@@ -20,7 +11,8 @@ fn test_parse_sigle_digit_number() {
 
 	expected := create_number_node(5.0)
 
-	assert p.parse()! == expected
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }
 
 fn test_parse_float_number() {
@@ -31,7 +23,8 @@ fn test_parse_float_number() {
 
 	expected := create_number_node(6.9)
 
-	assert p.parse()! == expected
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }
 
 fn test_parse_simple_addition() {
@@ -46,7 +39,8 @@ fn test_parse_simple_addition() {
 		right:    create_number_node(42.0)
 	})
 
-	assert p.parse()! == expected
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }
 
 fn test_parse_addition_and_division() {
@@ -65,7 +59,8 @@ fn test_parse_addition_and_division() {
 		})
 	})
 
-	assert p.parse()! == expected
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }
 
 fn test_parse_multiplication_between_parenthesis_with_substraction() {
@@ -84,7 +79,8 @@ fn test_parse_multiplication_between_parenthesis_with_substraction() {
 		})
 	})
 
-	assert p.parse()! == expected
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }
 
 fn test_parse_correct_order_with_parenthesis() {
@@ -103,7 +99,8 @@ fn test_parse_correct_order_with_parenthesis() {
 		right:    create_number_node(3.0)
 	})
 
-	assert p.parse()! == expected
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }
 
 fn test_parse_with_multiple_parenthesis() {
@@ -130,7 +127,8 @@ fn test_parse_with_multiple_parenthesis() {
 		right:    create_number_node(5.0)
 	})
 
-	assert p.parse()! == expected
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }
 
 fn test_parse_nested_parenthesis() {
@@ -161,10 +159,6 @@ fn test_parse_nested_parenthesis() {
 		})
 	})
 
-	assert p.parse()! == expected
-}
-
-// Helper to generate the AST nodes (this way is more readable and not so nested)
-fn create_number_node(value f32) AstNode {
-	return AstNode(NumberNode{ value: value })
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
 }

@@ -12,7 +12,8 @@ fn test_evaluation_single_digit_number() {
 
 	expected := 5.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_addition() {
@@ -23,7 +24,8 @@ fn test_evaluation_addition() {
 
 	expected := 69.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_addition_with_float_values() {
@@ -34,7 +36,8 @@ fn test_evaluation_addition_with_float_values() {
 
 	expected := 10.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_subtraction() {
@@ -45,7 +48,8 @@ fn test_evaluation_subtraction() {
 
 	expected := 20.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_subtraction_with_negative_result() {
@@ -56,7 +60,8 @@ fn test_evaluation_subtraction_with_negative_result() {
 
 	expected := -3.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_multiplication() {
@@ -67,7 +72,8 @@ fn test_evaluation_multiplication() {
 
 	expected := 14.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_division() {
@@ -78,7 +84,8 @@ fn test_evaluation_division() {
 
 	expected := 2.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_division_non_integer_result() {
@@ -89,7 +96,8 @@ fn test_evaluation_division_non_integer_result() {
 
 	expected := 0.5
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_correct_order_of_operations() {
@@ -100,7 +108,8 @@ fn test_evaluation_correct_order_of_operations() {
 
 	expected := 5.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_correct_order_of_operations_with_parenthesis() {
@@ -111,7 +120,8 @@ fn test_evaluation_correct_order_of_operations_with_parenthesis() {
 
 	expected := -2.5
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_with_parenthesis() {
@@ -122,7 +132,8 @@ fn test_evaluation_with_parenthesis() {
 
 	expected := -7.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_with_multiple_parenthesis() {
@@ -133,7 +144,8 @@ fn test_evaluation_with_multiple_parenthesis() {
 
 	expected := -1.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_with_nested_parenthesis() {
@@ -144,7 +156,8 @@ fn test_evaluation_with_nested_parenthesis() {
 
 	expected := 7.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
 
 fn test_evaluation_with_multiple_nested_parenthesis() {
@@ -155,5 +168,6 @@ fn test_evaluation_with_multiple_nested_parenthesis() {
 
 	expected := 2.0
 
-	assert ast.evaluate(p.parse()!)! == expected
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, f32(expected))
 }
