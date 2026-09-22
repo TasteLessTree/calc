@@ -133,7 +133,7 @@ fn test_parse_with_multiple_parenthesis() {
 	assert p.parse()! == expected
 }
 
-fn test_nested_parenthesis() {
+fn test_parse_nested_parenthesis() {
 	input := '((9 / 7) + 5 * 8) - (6 + 4)'
 
 	mut l := lexer.Lexer.new()

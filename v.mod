@@ -1,6 +1,6 @@
 Module {
-	name: 'interpreter'
-	description: 'A simple interpreter for a programming language written in V!'
+	name: 'calc'
+	description: 'A simple calculator with AST generation written in V!'
 	version: '0.0.0'
 	license: 'MIT'
 	dependencies: []
