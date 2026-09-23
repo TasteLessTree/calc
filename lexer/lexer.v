@@ -6,16 +6,16 @@ mut:
 	column   int = 1
 }
 
-pub fn Lexer.new() Lexer {
-	return Lexer{ position: 0, column: 1 }
-}
-
 enum Char {
 	whitespace
 	number
 	symbol
 	invalid
 	eof
+}
+
+pub fn Lexer.new() Lexer {
+	return Lexer{ position: 0, column: 1 }
 }
 
 // Given an input, returns a list(array) of tokens
