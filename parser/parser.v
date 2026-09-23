@@ -42,7 +42,7 @@ fn (mut p Parser) parse_factor() !AstNode {
 		.num {
 			p.consume()
 
-			return AstNode(NumberNode{ value: token.data.f32() })
+			return AstNode(NumberNode{ value: token.data.f64() })
 		}
 		.left_parent {
 			p.consume()

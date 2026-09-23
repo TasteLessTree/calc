@@ -36,6 +36,6 @@ fn assertion_failed_msg[T](actual T, expected T) string {
 	return '${actual_str} ${separator_str} ${expected_str} ${separator_str}'
 }
 
-fn create_number_node(value f32) AstNode {
+fn create_number_node(value f64) AstNode {
 	return AstNode(NumberNode{ value: value })
 }

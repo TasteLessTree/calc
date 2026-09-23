@@ -9,7 +9,7 @@ pub enum Operator {
 
 pub struct NumberNode {
 pub:
-	value f32
+	value f64
 }
 
 pub struct BinaryNode {
@@ -22,7 +22,7 @@ pub:
 pub type AstNode = NumberNode | BinaryNode
 
 // Evaluate the AST
-pub fn evaluate(node &AstNode) !f32 {
+pub fn evaluate(node &AstNode) !f64 {
 	return match node {
 		NumberNode {
 			node.value
