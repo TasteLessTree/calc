@@ -15,6 +15,7 @@ Parsing the expression and returning the correct value as f64 number.
 ### Install Vlang
 
 Follow the instructions to install V on your device
+
 [V's official repo](https://github.com/vlang/v)
 
 ### Clone this repo
@@ -58,6 +59,34 @@ Or
 ```bash
 v run . 3 + 2
 ```
+
+##### Errors
+-----
+
+When using command line arguments and parenthesis, to avoid the following errors on your current shell:
+```bash
+v run . (1 + 2) * 3
+bash: syntax error near unexpected token `('
+```
+
+```zsh
+v run . (5 - 3) * 4
+zsh: unknown file attribute: 5
+```
+
+Please, surround the full expression with double quotes (```"```)
+
+```bash
+v run . "(1 + 2) * 3"
+Result: 9.0
+```
+
+```zsh
+v run . "(5 - 3) * 4"
+Result: 8.0
+```
+
+Try using double quotes (```"```) if you encounter any errors with command line arguments
 
 ---
 
