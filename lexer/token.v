@@ -6,6 +6,7 @@ pub enum TokenType {
 	plus
 	sub
 	div
+	mod
 	mult
 	right_parent
 	left_parent
@@ -39,6 +40,9 @@ fn get_token_type(t TokenType) string {
 		}
 		.div {
 			'division'
+		}
+		.mod {
+			'module'
 		}
 		.mult {
 			'multiplication'

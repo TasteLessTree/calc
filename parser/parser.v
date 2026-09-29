@@ -71,6 +71,9 @@ fn (mut p Parser) parse_term() !AstNode {
 			.div {
 				Operator.div
 			}
+			.mod {
+				Operator.mod
+			}
 			else {
 				break
 			}

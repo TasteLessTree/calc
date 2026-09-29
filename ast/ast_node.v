@@ -1,10 +1,13 @@
 module ast
 
+import math
+
 pub enum Operator {
 	add
 	sub
 	mul
 	div
+	mod
 }
 
 pub struct NumberNode {
@@ -47,6 +50,13 @@ pub fn evaluate(node &AstNode) !f64 {
 					}
 
 					left / right
+				}
+				.mod {
+					if right == 0.0 {
+						return error('Cannot find the remainder when dividing by zero')
+					}
+
+					math.fmod(left, right)
 				}
 			}
 		}
