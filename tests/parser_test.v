@@ -162,3 +162,19 @@ fn test_parse_nested_parenthesis() {
 	actual := p.parse()!
 	assert actual == expected, assertion_failed_msg(actual, expected)
 }
+
+fn test_parse_with_modulus() {
+	input := '15 % 3'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := AstNode(BinaryNode{
+		operator: Operator.mod
+		left:     create_number_node(15.0)
+		right:    create_number_node(3.0)
+	})
+
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}

@@ -171,3 +171,27 @@ fn test_evaluation_with_multiple_nested_parenthesis() {
 	actual := ast.evaluate(p.parse()!)!
 	assert actual == expected, assertion_failed_msg(actual, expected)
 }
+
+fn test_evaluation_modulus() {
+	input := '15 % 3'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := 0.0
+
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}
+
+fn test_evaluation_modulus_non_zero_result() {
+	input := '5 % 2'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := 1.0
+
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}

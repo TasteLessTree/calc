@@ -125,3 +125,17 @@ fn test_tokenize_nested_parenthesis() {
 	actual := l.tokenize(input)
 	assert actual == expected, assertion_failed_msg(actual, expected)
 }
+
+fn test_tokenize_with_modulus() {
+	input := '15 % 3'
+
+	mut l := lexer.Lexer.new()
+
+	expected := [Token{ token_type: TokenType.num, data: '15', column: 1 },
+		Token{ token_type: TokenType.mod, data: '%', column: 4 },
+		Token{ token_type: TokenType.num, data: '3', column: 6 },
+		Token{ token_type: TokenType.token_eof, column: 7 }]
+
+	actual := l.tokenize(input)
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}
