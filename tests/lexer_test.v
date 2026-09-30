@@ -139,3 +139,29 @@ fn test_tokenize_with_modulus() {
 	actual := l.tokenize(input)
 	assert actual == expected, assertion_failed_msg(actual, expected)
 }
+
+fn test_tokenize_exponent() {
+	input := '^'
+
+	mut l := lexer.Lexer.new()
+
+	expected := [Token{ token_type: TokenType.exponent, data: '^', column: 1 },
+		Token{ token_type: TokenType.token_eof, column: 2 }]
+
+	actual := l.tokenize(input)
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}
+
+fn test_tokenize_raise_a_number_to_another_number() {
+	input := '5 ^ 3'
+
+	mut l := lexer.Lexer.new()
+
+	expected := [Token{ token_type: TokenType.num, data: '5', column: 1 },
+		Token{ token_type: TokenType.exponent, data: '^', column: 3 },
+		Token{ token_type: TokenType.num, data: '3', column: 5 },
+		Token{ token_type: TokenType.token_eof, column: 6 }]
+
+	actual := l.tokenize(input)
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}

@@ -195,3 +195,51 @@ fn test_evaluation_modulus_non_zero_result() {
 	actual := ast.evaluate(p.parse()!)!
 	assert actual == expected, assertion_failed_msg(actual, expected)
 }
+
+fn test_evaluation_number_raised_to_another_number() {
+	input := '2 ^ 6'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := 64.0
+
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}
+
+fn test_evaluation_number_raised_to_zero() {
+	input := '48 ^ 0'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := 1.0
+
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}
+
+fn test_evaluation_square_root_of_twenty_five() {
+	input := '25 ^ (1 / 2)'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := 5.0
+
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}
+
+fn test_evaluation_number_raised_to_negative_number() {
+	input := '2 ^ (0 - 3)'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := 0.125
+
+	actual := ast.evaluate(p.parse()!)!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}

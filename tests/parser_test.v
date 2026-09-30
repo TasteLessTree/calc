@@ -178,3 +178,19 @@ fn test_parse_with_modulus() {
 	actual := p.parse()!
 	assert actual == expected, assertion_failed_msg(actual, expected)
 }
+
+fn test_parse_number_raise_to_another_number() {
+	input := '9 ^ 2'
+
+	mut l := lexer.Lexer.new()
+	mut p := parser.Parser.new(l.tokenize(input))
+
+	expected := AstNode(BinaryNode{
+		operator: Operator.exp
+		left:     create_number_node(9.0)
+		right:    create_number_node(2.0)
+	})
+
+	actual := p.parse()!
+	assert actual == expected, assertion_failed_msg(actual, expected)
+}
