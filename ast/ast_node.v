@@ -6,6 +6,7 @@ pub enum Operator {
 	add
 	sub
 	mul
+	exp
 	div
 	mod
 }
@@ -58,6 +59,9 @@ pub fn evaluate(node &AstNode) !f64 {
 
 					math.fmod(left, right)
 				}
+				.exp {
+					left ** right
+				}
 			}
 		}
 	}
@@ -97,6 +101,16 @@ pub fn print_ast(node &AstNode, depth int) {
 				}
 				.div {
 					println('DIV(/)')
+					print_ast(node.left, depth + 1)
+					print_ast(node.right, depth + 1)
+				}
+				.mod {
+					println('MOD(%)')
+					print_ast(node.left, depth + 1)
+					print_ast(node.right, depth + 1)
+				}
+				.exp {
+					println('POW(^)')
 					print_ast(node.left, depth + 1)
 					print_ast(node.right, depth + 1)
 				}

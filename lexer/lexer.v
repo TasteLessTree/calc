@@ -108,7 +108,7 @@ fn (mut l Lexer) read_number(source string) Token {
 
 // Check whether a given byte is a symbol (eg. `+`)
 fn is_symbol(b u8) bool {
-	return b == `+` || b == `-` || b == `/` || b == `*` || b == `(` || b == `)` || b == `%`
+	return b == `+` || b == `-` || b == `/` || b == `*` || b == `(` || b == `)` || b == `%` || b == `^`
 }
 
 // Check whether a given byte is a digit
@@ -165,6 +165,9 @@ fn check_for_symbols(word string) TokenType {
 		}
 		'*' {
 			TokenType.mult
+		}
+		'^' {
+			TokenType.exponent
 		}
 		'(' {
 			TokenType.left_parent

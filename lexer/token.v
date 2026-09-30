@@ -8,6 +8,7 @@ pub enum TokenType {
 	div
 	mod
 	mult
+	exponent
 	right_parent
 	left_parent
 	token_eof
@@ -46,6 +47,9 @@ fn get_token_type(t TokenType) string {
 		}
 		.mult {
 			'multiplication'
+		}
+		.exponent {
+			'exponent'
 		}
 		.right_parent {
 			'right parenthesis'

@@ -65,6 +65,9 @@ fn (mut p Parser) parse_term() !AstNode {
 
 	for {
 		operator := match p.peek().token_type {
+			.exponent {
+				Operator.exp
+			}
 			.mult {
 				Operator.mul
 			}
