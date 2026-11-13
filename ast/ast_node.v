@@ -19,8 +19,8 @@ pub:
 pub struct BinaryNode {
 pub:
 	operator Operator
-	left     AstNode
-	right    AstNode
+	left     &AstNode
+	right    &AstNode
 }
 
 pub type AstNode = NumberNode | BinaryNode
@@ -69,7 +69,7 @@ pub fn evaluate(node &AstNode) !f64 {
 
 // Printing the AST
 fn print_indent(depth int) {
-	for i in 0 .. depth {
+	for _ in 0 .. depth {
 		print(' ')
 	}
 }

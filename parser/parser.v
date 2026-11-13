@@ -84,12 +84,13 @@ fn (mut p Parser) parse_term() !AstNode {
 
 		p.consume()
 
-		right := p.parse_factor()!
+		left_node := left
+		right_node := p.parse_factor()!
 
 		left = AstNode(BinaryNode{
 			operator: operator
-			left:     left
-			right:    right
+			left:     &left_node
+			right:    &right_node
 		})
 	}
 
@@ -115,12 +116,13 @@ fn (mut p Parser) parse_expression() !AstNode {
 
 		p.consume()
 
-		right := p.parse_term()!
+		left_node := left
+		right_node := p.parse_term()!
 
 		left = AstNode(BinaryNode{
 			operator: operator
-			left:     left
-			right:    right
+			left:     &left_node
+			right:    &right_node
 		})
 	}
 
